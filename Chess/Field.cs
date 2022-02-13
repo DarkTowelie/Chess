@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace Chess
 {
@@ -11,27 +6,59 @@ namespace Chess
     {
         public Cell[,] Cells { get; }
         public Image Sprite { get; }
+        public Image HoveredSprite { get; }
         public int SpriteSizeX { get; }
         public int SpriteSizeY { get; }
+        public int BorderWidth { get; }
+        public float CellWidth { get; }
+        public Point CellIndexHovered { get; private set; }
 
-        public Field(string spriteSrc)
+        public Field()
         {
+            BorderWidth = 18;
+            CellWidth = 77.5f;
+            CellIndexHovered = new Point(-1,-1);
+            Sprite = new Bitmap("image/field.jpg");
+            HoveredSprite = new Bitmap("image/CellHovered.png");
+            SpriteSizeX = 656;
+            SpriteSizeY = 656;
+
             Cells = new Cell[8, 8];
-            for(int i = 0; i < Cells.GetLength(0); i++)
+            for (int i = 0; i < Cells.GetLength(0); i++)
             {
-                for(int j = 0; j < Cells.GetLength(1); j++)
+                for (int j = 0; j < Cells.GetLength(1); j++)
                 {
-                    int left = 18 + i * 78;
-                    int right = left + 78;
-                    int top = 18 + j * 78;
-                    int bottom = top + 78;
+                    float left = BorderWidth + i * CellWidth;
+                    float right = left + CellWidth;
+                    float top = BorderWidth + j * CellWidth;
+                    float bottom = top + CellWidth;
                     bool front = (j == 0 || j == Cells.Length - 1);
                     Cells[i, j] = new Cell(left, top, right, bottom, false, front);
                 }
             }
-            Sprite = new Bitmap(spriteSrc);
-            SpriteSizeX = 656;
-            SpriteSizeY = 656;
+        }
+        public void CheckCellHovered(int x, int y)
+        {
+            bool isHoverd = false;
+            for (int i = 0; i < Cells.GetLength(0); i++)
+            {
+                for (int j = 0; j < Cells.GetLength(1); j++)
+                {
+                    if(Cells[i,j].Left <= x &&
+                        Cells[i,j].Right >=x &&
+                        Cells[i,j].Top <= y &&
+                        Cells[i,j].Bottom >= y)
+                    {
+                        CellIndexHovered = new Point(i, j);
+                        isHoverd = true;
+                    }
+                }
+            }
+
+            if(!isHoverd)
+            {
+                CellIndexHovered = new Point(-1, -1);
+            }
         }
     }
 }

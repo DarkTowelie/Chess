@@ -16,7 +16,7 @@ namespace Chess
         public bool IsHot { get; set; }
         public bool IsFront { get; }
 
-        public Cell(int Left, int Top, int Right, int Bottom, bool IsHot, bool IsFront)
+        public Cell(float Left, float Top, float Right, float Bottom, bool IsHot, bool IsFront)
         {
             this.Left = Left;
             this.Top = Top;
