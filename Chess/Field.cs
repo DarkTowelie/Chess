@@ -7,19 +7,23 @@ namespace Chess
         public Cell[,] Cells { get; }
         public Image Sprite { get; }
         public Image HoveredSprite { get; }
+        public Image SelectedSprite { get; }
         public int SpriteSizeX { get; }
         public int SpriteSizeY { get; }
         public int BorderWidth { get; }
         public float CellWidth { get; }
         public Point CellIndexHovered { get; private set; }
+        public Point CellIndexSelected { get; private set; }
 
         public Field()
         {
             BorderWidth = 18;
             CellWidth = 77.5f;
             CellIndexHovered = new Point(-1,-1);
+            CellIndexSelected = new Point(-1, -1);
             Sprite = new Bitmap("image/field.jpg");
             HoveredSprite = new Bitmap("image/CellHovered.png");
+            SelectedSprite = new Bitmap("image/CellSelected.png");
             SpriteSizeX = 656;
             SpriteSizeY = 656;
 
@@ -37,7 +41,7 @@ namespace Chess
                 }
             }
         }
-        public void CheckCellHovered(int x, int y)
+        public void HoverCell(int x, int y)
         {
             bool isHoverd = false;
             for (int i = 0; i < Cells.GetLength(0); i++)
@@ -58,6 +62,18 @@ namespace Chess
             if(!isHoverd)
             {
                 CellIndexHovered = new Point(-1, -1);
+            }
+        }
+
+        public void SelectCell()
+        {
+            if(CellIndexSelected == CellIndexHovered)
+            {
+                CellIndexSelected = new Point(-1, -1);
+            }
+            else
+            {
+                CellIndexSelected = CellIndexHovered;
             }
         }
     }

@@ -37,6 +37,16 @@ namespace Chess
             {
                 this.Cursor = Cursors.Default;
             }
+
+            if (field.CellIndexSelected != new Point(-1, -1))
+            {
+                int index0 = field.CellIndexSelected.X;
+                int index1 = field.CellIndexSelected.Y;
+                gr.DrawImage(field.SelectedSprite,
+                    field.Cells[index0, index1].Left,
+                    field.Cells[index0, index1].Top,
+                    field.CellWidth + 0.5f, field.CellWidth + 0.5f);
+            }
         }
 
         private void FrameTimer_Tick(object sender, EventArgs e)
@@ -46,8 +56,13 @@ namespace Chess
 
         private void f_Field_MouseMove(object sender, MouseEventArgs e)
         {
-            field.CheckCellHovered(e.X, e.Y);
+            field.HoverCell(e.X, e.Y);
             this.Text = $"{e.X}; {e.Y}";
+        }
+
+        private void f_Field_Click(object sender, EventArgs e)
+        {
+            field.SelectCell();
         }
     }
 }

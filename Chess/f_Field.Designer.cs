@@ -47,6 +47,7 @@ namespace Chess
             this.MaximizeBox = false;
             this.Name = "f_Field";
             this.Text = "Шахматы";
+            this.Click += new System.EventHandler(this.f_Field_Click);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.f_Field_Paint);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.f_Field_MouseMove);
             this.ResumeLayout(false);

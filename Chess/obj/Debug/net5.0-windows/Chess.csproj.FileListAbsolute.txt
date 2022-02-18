@@ -52,3 +52,21 @@ H:\Chess\Chess\obj\Debug\net5.0-windows\Chess.dll
 H:\Chess\Chess\obj\Debug\net5.0-windows\ref\Chess.dll
 H:\Chess\Chess\obj\Debug\net5.0-windows\Chess.pdb
 H:\Chess\Chess\obj\Debug\net5.0-windows\Chess.genruntimeconfig.cache
+C:\Шестаков В.В\Chess\Chess\bin\Debug\net5.0-windows\Chess.exe
+C:\Шестаков В.В\Chess\Chess\bin\Debug\net5.0-windows\Chess.deps.json
+C:\Шестаков В.В\Chess\Chess\bin\Debug\net5.0-windows\Chess.runtimeconfig.json
+C:\Шестаков В.В\Chess\Chess\bin\Debug\net5.0-windows\Chess.runtimeconfig.dev.json
+C:\Шестаков В.В\Chess\Chess\bin\Debug\net5.0-windows\Chess.dll
+C:\Шестаков В.В\Chess\Chess\bin\Debug\net5.0-windows\ref\Chess.dll
+C:\Шестаков В.В\Chess\Chess\bin\Debug\net5.0-windows\Chess.pdb
+C:\Шестаков В.В\Chess\Chess\obj\Debug\net5.0-windows\Chess.csproj.AssemblyReference.cache
+C:\Шестаков В.В\Chess\Chess\obj\Debug\net5.0-windows\Chess.f_Field.resources
+C:\Шестаков В.В\Chess\Chess\obj\Debug\net5.0-windows\Chess.csproj.GenerateResource.cache
+C:\Шестаков В.В\Chess\Chess\obj\Debug\net5.0-windows\Chess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Шестаков В.В\Chess\Chess\obj\Debug\net5.0-windows\Chess.AssemblyInfoInputs.cache
+C:\Шестаков В.В\Chess\Chess\obj\Debug\net5.0-windows\Chess.AssemblyInfo.cs
+C:\Шестаков В.В\Chess\Chess\obj\Debug\net5.0-windows\Chess.csproj.CoreCompileInputs.cache
+C:\Шестаков В.В\Chess\Chess\obj\Debug\net5.0-windows\Chess.dll
+C:\Шестаков В.В\Chess\Chess\obj\Debug\net5.0-windows\ref\Chess.dll
+C:\Шестаков В.В\Chess\Chess\obj\Debug\net5.0-windows\Chess.pdb
+C:\Шестаков В.В\Chess\Chess\obj\Debug\net5.0-windows\Chess.genruntimeconfig.cache
