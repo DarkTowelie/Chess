@@ -39,8 +39,7 @@ namespace Chess
                     float right = left + CellWidth;
                     float top = BorderWidth + i * CellWidth;
                     float bottom = top + CellWidth;
-                    bool front = (i == 0 || i == Cells.Length - 1);
-                    Cells[i, j] = new Cell(left, top, right, bottom, false, front);
+                    Cells[i, j] = new Cell(left, top, right, bottom, false);
                 }
             }
 
@@ -54,8 +53,8 @@ namespace Chess
         }
         public void HoverCell(int x, int y)
         {
-            bool isHoverd = false;
-            for (int i = 0; i < Cells.GetLength(0); i++)
+            bool isHovered = false;
+            for (int i = 0; i < Cells.GetLength(0) && !isHovered; i++)
             {
                 for (int j = 0; j < Cells.GetLength(1); j++)
                 {
@@ -65,12 +64,13 @@ namespace Chess
                         Cells[i,j].Bottom >= y)
                     {
                         CellIndexHovered = new Point(i, j);
-                        isHoverd = true;
+                        isHovered = true;
+                        break;
                     }
                 }
             }
 
-            if(!isHoverd)
+            if(!isHovered)
             {
                 CellIndexHovered = new Point(-1, -1);
             }

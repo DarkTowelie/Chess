@@ -14,16 +14,14 @@ namespace Chess
         public float Bottom { get; }
 
         public bool IsHot { get; set; }
-        public bool IsFront { get; }
 
-        public Cell(float Left, float Top, float Right, float Bottom, bool IsHot, bool IsFront)
+        public Cell(float Left, float Top, float Right, float Bottom, bool IsHot)
         {
             this.Left = Left;
             this.Top = Top;
             this.Right = Right;
             this.Bottom = Bottom;
             this.IsHot = IsHot;
-            this.IsFront = IsFront;
         }
 
     }
