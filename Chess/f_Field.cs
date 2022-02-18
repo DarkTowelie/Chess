@@ -47,6 +47,20 @@ namespace Chess
                     field.Cells[index0, index1].Top,
                     field.CellWidth + 0.5f, field.CellWidth + 0.5f);
             }
+
+            foreach(Figure figure in field.Black)
+            {
+                float X = field.Cells[figure.Index0, figure.Index1].Left;
+                float Y = field.Cells[figure.Index0, figure.Index1].Top;
+                gr.DrawImage(figure.Sprite, X, Y, field.CellWidth, field.CellWidth);
+            }
+
+            foreach (Figure figure in field.White)
+            {
+                float X = field.Cells[figure.Index0, figure.Index1].Left;
+                float Y = field.Cells[figure.Index0, figure.Index1].Top;
+                gr.DrawImage(figure.Sprite, X, Y, field.CellWidth, field.CellWidth);
+            }
         }
 
         private void FrameTimer_Tick(object sender, EventArgs e)
