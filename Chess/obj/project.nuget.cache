@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "GornBZ4MWF7/GasXabO/aZg/1jZS3XfLX9FYIQFU/03oxXZFtbNBiO7MS8k8TOtyW0Ksv9t78Ao8KpFf/iIFdw==",
+  "dgSpecHash": "/PYHPKup7BfSFf7oDIkNrtQGh9RRMttsD58he6bJ10VJ4xk9F62V9ecROQtUu6PN7pO54ozp493rLm8TsoZuhw==",
   "success": true,
-  "projectFilePath": "C:\\Шестаков В.В\\Chess\\Chess\\Chess.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\valer\\Desktop\\For Cloning\\Chess\\Chess\\Chess.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\valer\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.13\\microsoft.netcore.app.host.win-x64.5.0.13.nupkg.sha512"
+  ],
   "logs": []
 }

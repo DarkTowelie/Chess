@@ -8,23 +8,25 @@
     "net5.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Win10m\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\valer\\.nuget\\packages\\": {},
+    "E:\\Programs\\Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Шестаков В.В\\Chess\\Chess\\Chess.csproj",
+      "projectUniqueName": "C:\\Users\\valer\\Desktop\\For Cloning\\Chess\\Chess\\Chess.csproj",
       "projectName": "Chess",
-      "projectPath": "C:\\Шестаков В.В\\Chess\\Chess\\Chess.csproj",
-      "packagesPath": "C:\\Users\\Win10m\\.nuget\\packages\\",
-      "outputPath": "C:\\Шестаков В.В\\Chess\\Chess\\obj\\",
+      "projectPath": "C:\\Users\\valer\\Desktop\\For Cloning\\Chess\\Chess\\Chess.csproj",
+      "packagesPath": "C:\\Users\\valer\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\valer\\Desktop\\For Cloning\\Chess\\Chess\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "E:\\Programs\\Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Win10m\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\valer\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -60,6 +62,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[5.0.13, 5.0.13]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -68,7 +76,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -5,6 +5,7 @@ namespace Chess
 {
     class Field
     {
+        bool whiteTurn;
         public Cell[,] Cells { get; }
         public Image Sprite { get; }
         public Image HoveredSprite { get; }
@@ -15,8 +16,8 @@ namespace Chess
         public float CellWidth { get; }
         public Point CellIndexHovered { get; private set; }
         public Point CellIndexSelected { get; private set; }
-        public List<Figure> Black { get; }
         public List<Figure> White { get; }
+        public List<Figure> Black { get; }
 
         public Field()
         {
@@ -29,6 +30,7 @@ namespace Chess
             SelectedSprite = new Bitmap("image/CellSelected.png");
             SpriteSizeX = 656;
             SpriteSizeY = 656;
+            whiteTurn = true;
 
             White = new List<Figure>();
             Black = new List<Figure>();
@@ -87,7 +89,7 @@ namespace Chess
             }
         }
 
-        public bool TryMove()
+        public bool CallMove()
         {
             int Index0 = CellIndexSelected.X;
             int Index1 = CellIndexSelected.Y;
@@ -101,9 +103,8 @@ namespace Chess
                 {
                     if(figure.Index0 == Index0 && figure.Index1 == Index1)
                     {
-                        figure.Move(NewIndex0, NewIndex1);
                         this.CellIndexSelected = new Point(-1, -1);
-                        return true;
+                        return figure.TryMove(NewIndex0, NewIndex1, ref whiteTurn, Black, White); ;
                     }
                 }
 
@@ -111,9 +112,8 @@ namespace Chess
                 {
                     if (figure.Index0 == Index0 && figure.Index1 == Index1)
                     {
-                        figure.Move(NewIndex0, NewIndex1);
                         this.CellIndexSelected = new Point(-1, -1);
-                        return true;
+                        return figure.TryMove(NewIndex0, NewIndex1, ref whiteTurn, Black, White); ;
                     }
                 }
             }
