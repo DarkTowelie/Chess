@@ -18,12 +18,21 @@ namespace Chess
             this.Sprite = new Bitmap(1, 1);
             this.IsWhite = false;
         }
-
-        public virtual bool TryMove(int newIndex0, int newIndex1, ref bool whiteTurn, List<Figure> White, List<Figure> Black) 
+        public bool TryMove(int newIndex0, int newIndex1, ref bool whiteTurn, List<Figure> White, List<Figure> Black)
+        {
+            if(CheckCanMove(newIndex0, newIndex1, ref whiteTurn, White, Black))
+            {
+                this.Index0 = newIndex0;
+                this.Index1 = newIndex1;
+                whiteTurn = !whiteTurn;
+                return true;
+            }
+            return false;
+        }
+        public virtual bool CheckCanMove(int newIndex0, int newIndex1, ref bool whiteTurn, List<Figure> White, List<Figure> Black) 
         { 
             return false; 
         }
-
         public bool CheckFigurePosition(Figure figure, int newIndex0, int newIndex1)
         {
             if(newIndex0 == figure.Index0 && newIndex1 == figure.Index1)
@@ -59,23 +68,20 @@ namespace Chess
             this.Sprite = isWhite ? new Bitmap("image/white/pawn.png") : new Bitmap("image/black/pawn.png");
         }
 
-        override public bool TryMove(int newIndex0, int newIndex1, ref bool whiteTurn, List<Figure> Black, List<Figure> White)
+        override public bool CheckCanMove(int newIndex0, int newIndex1, ref bool whiteTurn, List<Figure> Black, List<Figure> White)
         {
-            if(IsWhite && whiteTurn && TryMoveWhite(newIndex0, newIndex1, Black, White))
+            if(IsWhite && whiteTurn && CheckWhiteCanMove(newIndex0, newIndex1, Black, White))
             {
-                whiteTurn = false;
                 return true;
             }
 
-            if (!IsWhite && !whiteTurn && TryMoveBlack(newIndex0, newIndex1, Black, White))
+            if (!IsWhite && !whiteTurn && CheckBlackCanMove(newIndex0, newIndex1, Black, White))
             {
-                whiteTurn = true;
                 return true;
             }
             return false;
         }
-
-        bool TryMoveWhite(int newIndex0, int newIndex1, List<Figure> Black, List<Figure> White)
+        bool CheckWhiteCanMove(int newIndex0, int newIndex1, List<Figure> Black, List<Figure> White)
         {
             if (!ChecListFigurePosition(Black, newIndex0, newIndex1) && !ChecListFigurePosition(White, newIndex0, newIndex1))
             {
@@ -83,7 +89,6 @@ namespace Chess
                     newIndex0 == this.Index0 - 2 &&
                     newIndex1 == this.Index1)
                 {
-                    this.Index0 = newIndex0;
                     return true;
                 }
 
@@ -91,7 +96,6 @@ namespace Chess
                     newIndex0 == this.Index0 - 1 &&
                     newIndex1 == this.Index1)
                 {
-                    this.Index0 = newIndex0;
                     return true;
                 }
             }
@@ -101,15 +105,14 @@ namespace Chess
                 {
                     return false;
                 }
-                else if (this.Index0 - 1 == newIndex0 && 
+                
+                if (this.Index0 - 1 == newIndex0 && 
                     (this.Index1 + 1 == newIndex1 || this.Index1 - 1 == newIndex1))
                 {
                     for (int i = 0; i < Black.Count; i++)
                     {
                         if (Black[i].Index0 == newIndex0 && Black[i].Index1 == newIndex1)
                         {
-                            this.Index0 = newIndex0;
-                            this.Index1 = newIndex1;
                             Black.RemoveAt(i);
                             return true;
                         }
@@ -118,7 +121,7 @@ namespace Chess
             }
             return false;
         }
-        bool TryMoveBlack(int newIndex0, int newIndex1, List<Figure> Black, List<Figure> White)
+        bool CheckBlackCanMove(int newIndex0, int newIndex1, List<Figure> Black, List<Figure> White)
         {
             if (!ChecListFigurePosition(Black, newIndex0, newIndex1) && !ChecListFigurePosition(White, newIndex0, newIndex1))
             {
@@ -127,7 +130,6 @@ namespace Chess
                     newIndex0 == this.Index0 + 2 &&
                     newIndex1 == this.Index1)
                 {
-                    this.Index0 = newIndex0;
                     return true;
                 }
 
@@ -135,7 +137,6 @@ namespace Chess
                     newIndex0 == this.Index0 + 1 &&
                     newIndex1 == this.Index1)
                 {
-                    this.Index0 = newIndex0;
                     return true;
                 }
             }
@@ -145,15 +146,14 @@ namespace Chess
                 {
                     return false;
                 }
-                else if (this.Index0 + 1 == newIndex0 &&
+                
+                if (this.Index0 + 1 == newIndex0 &&
                             (this.Index1 + 1 == newIndex1 || this.Index1 - 1 == newIndex1))
                 {
                     for (int i = 0; i < White.Count; i++)
                     {
                         if (White[i].Index0 == newIndex0 && White[i].Index1 == newIndex1)
                         {
-                            this.Index0 = newIndex0;
-                            this.Index1 = newIndex1;
                             White.RemoveAt(i);
                             return true;
                         }

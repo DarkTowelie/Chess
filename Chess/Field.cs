@@ -19,7 +19,12 @@ namespace Chess
         public List<Figure> White { get; }
         public List<Figure> Black { get; }
 
-        public Field()
+        public bool WhiteTurn()
+        {
+            return whiteTurn;
+        }
+
+        public Field(int FormBorderHeight)
         {
             BorderWidth = 18;
             CellWidth = 77.5f;
@@ -47,7 +52,7 @@ namespace Chess
                 {
                     float left = BorderWidth + j * CellWidth;
                     float right = left + CellWidth;
-                    float top = BorderWidth + i * CellWidth;
+                    float top = BorderWidth + i * CellWidth + FormBorderHeight;
                     float bottom = top + CellWidth;
                     Cells[i, j] = new Cell(i, j, left, top, right, bottom, false);
                 }
@@ -104,7 +109,7 @@ namespace Chess
                     if(figure.Index0 == Index0 && figure.Index1 == Index1)
                     {
                         this.CellIndexSelected = new Point(-1, -1);
-                        return figure.TryMove(NewIndex0, NewIndex1, ref whiteTurn, Black, White); ;
+                        return figure.TryMove(NewIndex0, NewIndex1, ref whiteTurn, Black, White);
                     }
                 }
 
