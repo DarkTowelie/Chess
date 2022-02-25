@@ -30,6 +30,14 @@ namespace Chess
             SpriteSizeX = 656;
             SpriteSizeY = 656;
 
+            White = new List<Figure>();
+            Black = new List<Figure>();
+            for (int i = 0; i < 8; i++)
+            {
+                White.Add(new Pawn(6, i, true));
+                Black.Add(new Pawn(1, i, false));
+            }
+
             Cells = new Cell[8, 8];
             for (int i = 0; i < Cells.GetLength(0); i++)
             {
@@ -39,16 +47,8 @@ namespace Chess
                     float right = left + CellWidth;
                     float top = BorderWidth + i * CellWidth;
                     float bottom = top + CellWidth;
-                    Cells[i, j] = new Cell(left, top, right, bottom, false);
+                    Cells[i, j] = new Cell(i, j, left, top, right, bottom, false);
                 }
-            }
-
-            White = new List<Figure>();
-            Black = new List<Figure>();
-            for(int i = 0; i < 8; i++)
-            {
-                White.Add(new Pawn(1, i, true));
-                Black.Add(new Pawn(6, i, false));
             }
         }
         public void HoverCell(int x, int y)
@@ -85,6 +85,39 @@ namespace Chess
             {
                 CellIndexSelected = CellIndexHovered;
             }
+        }
+
+        public bool TryMove()
+        {
+            int Index0 = CellIndexSelected.X;
+            int Index1 = CellIndexSelected.Y;
+            if (CellIndexSelected != new Point(-1, -1) && 
+                CellIndexHovered != new Point(-1, -1) &&
+                CellIndexHovered != CellIndexSelected)
+            {
+                int NewIndex0 = CellIndexHovered.X;
+                int NewIndex1 = CellIndexHovered.Y;
+                foreach(Figure figure in Black)
+                {
+                    if(figure.Index0 == Index0 && figure.Index1 == Index1)
+                    {
+                        figure.Move(NewIndex0, NewIndex1);
+                        this.CellIndexSelected = new Point(-1, -1);
+                        return true;
+                    }
+                }
+
+                foreach (Figure figure in White)
+                {
+                    if (figure.Index0 == Index0 && figure.Index1 == Index1)
+                    {
+                        figure.Move(NewIndex0, NewIndex1);
+                        this.CellIndexSelected = new Point(-1, -1);
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }

@@ -76,7 +76,10 @@ namespace Chess
 
         private void f_Field_Click(object sender, EventArgs e)
         {
-            field.SelectCell();
+            if(!field.TryMove())
+            {
+                field.SelectCell();
+            }
         }
     }
 }
